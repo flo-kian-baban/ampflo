@@ -51,15 +51,13 @@ export default function ProcessTimeline() {
                         <div className="ml-24 md:ml-0 w-full md:w-5/12">
                             <div className={cn("p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 relative",
                                 // Adding little arrow pointing to the dot
-                                "before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-white before:rotate-45 before:border-l before:border-b before:border-slate-100",
+                                // Desktop arrow (hidden on mobile)
+                                "md:before:content-[''] md:before:absolute md:before:top-1/2 md:before:-translate-y-1/2 md:before:w-4 md:before:h-4 md:before:bg-white md:before:rotate-45 md:before:border-l md:before:border-b md:before:border-slate-100",
                                 idx % 2 === 0
-                                    ? "md:before:-left-2 md:before:border-l md:before:border-b md:before:border-t-0 md:before:border-r-0" // Right side items (even index reversed -> actually left side in flex-row-reverse?) Wait.
-                                    // If flex-row-reverse, the first item is on the Right. 
-                                    // Let's rely on standard layouts.
-                                    : "md:before:-right-2 md:before:border-r md:before:border-t md:before:border-l-0 md:before:border-b-0" // Left side items
+                                    ? "md:before:-left-2 md:before:border-l md:before:border-b md:before:border-t-0 md:before:border-r-0"
+                                    : "md:before:-right-2 md:before:border-r md:before:border-t md:before:border-l-0 md:before:border-b-0"
                             )}>
-                                {/* Arrow fix for mobile - always on left */}
-                                <div className="md:hidden absolute top-8 -left-2 w-4 h-4 bg-white rotate-45 border-l border-b border-slate-100"></div>
+                                {/* Mobile arrow removed to prevent text overlap */}
 
                                 <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 rounded-full">
                                     Step 0{idx + 1}

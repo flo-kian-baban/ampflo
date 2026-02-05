@@ -9,16 +9,40 @@ export default function BookForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
-        setTimeout(() => {
+        try {
+            // Collect form data
+            const formData = new FormData(e.target as HTMLFormElement);
+            const data = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                clinic: formData.get("clinic"),
+                phone: formData.get("phone"),
+                message: formData.get("message"),
+            };
+
+            const response = await fetch("/api/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Error submitting form. Please try again.");
+        } finally {
             setIsSubmitting(false);
-            setIsSuccess(true);
-            // Reset after a while if wanted, but success state usually sticks for landing pages
-        }, 1500);
+        }
     };
 
     if (isSuccess) {
@@ -42,6 +66,7 @@ export default function BookForm() {
                     <label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</label>
                     <input
                         required
+                        name="name"
                         type="text"
                         id="name"
                         placeholder="Dr. John Doe"
@@ -52,6 +77,7 @@ export default function BookForm() {
                     <label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</label>
                     <input
                         required
+                        name="email"
                         type="email"
                         id="email"
                         placeholder="john@clinic.com"
@@ -65,6 +91,7 @@ export default function BookForm() {
                     <label htmlFor="clinic" className="text-sm font-medium text-slate-700">Clinic Name</label>
                     <input
                         required
+                        name="clinic"
                         type="text"
                         id="clinic"
                         placeholder="Bright Smile Dental"
@@ -75,6 +102,7 @@ export default function BookForm() {
                     <label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</label>
                     <input
                         required
+                        name="phone"
                         type="tel"
                         id="phone"
                         placeholder="(555) 123-4567"
@@ -87,6 +115,7 @@ export default function BookForm() {
                 <label htmlFor="message" className="text-sm font-medium text-slate-700">Message (Optional)</label>
                 <textarea
                     id="message"
+                    name="message"
                     rows={3}
                     placeholder="Tell us about your current content efforts..."
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none"
