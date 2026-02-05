@@ -2,17 +2,13 @@
 
 import { cn } from "@/lib/cn";
 import { Check, Info } from "lucide-react";
-import { useState } from "react";
 
 export default function Pricing() {
-    const [isAmpPricing, setIsAmpPricing] = useState(false);
-
     const tiers = [
         {
             name: "Launch",
             desc: "Just Content Creation",
             price: 800,
-            ampPrice: 700,
             features: [
                 "4 Short-Form Videos",
                 "Limited Visual Assets",
@@ -25,7 +21,6 @@ export default function Pricing() {
             name: "Hands-Free",
             desc: "Social Media Management",
             price: 1200,
-            ampPrice: 1100,
             features: [
                 "Social Media Management",
                 "8 Short-Form Videos",
@@ -41,7 +36,6 @@ export default function Pricing() {
             name: "Full-House",
             desc: "Online Presence Management",
             price: 1800,
-            ampPrice: 1700,
             features: [
                 "Full Online Presence Mgmt",
                 "12 Short-Form Videos",
@@ -58,37 +52,6 @@ export default function Pricing() {
 
     return (
         <div className="w-full">
-            {/* Toggle Control */}
-            <div className="flex flex-col items-center justify-center mb-12">
-                <span className="text-sm font-semibold text-slate-500 mb-3 tracking-wide uppercase">Unlock Partner Rates</span>
-                <button
-                    onClick={() => setIsAmpPricing(!isAmpPricing)}
-                    className={cn(
-                        "relative inline-flex h-12 w-64 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-                        isAmpPricing ? "bg-blue-600" : "bg-slate-200"
-                    )}
-                >
-                    <span className="absolute left-4 text-xs font-bold text-slate-500 z-10 transition-opacity duration-200" style={{ opacity: isAmpPricing ? 0 : 1 }}>Standard</span>
-                    <span className="absolute right-4 text-xs font-bold text-white z-10 transition-opacity duration-200" style={{ opacity: isAmpPricing ? 1 : 0 }}>AMP Pricing</span>
-
-                    <span
-                        className={cn(
-                            "inline-block h-10 w-32 transform rounded-full bg-white shadow transition duration-300 ease-in-out flex items-center justify-center",
-                            isAmpPricing ? "translate-x-[7.5rem]" : "translate-x-1"
-                        )}
-                    >
-                        <span className="text-xs font-bold text-slate-900">
-                            {isAmpPricing ? "Active" : "Inactive"}
-                        </span>
-                    </span>
-                </button>
-                {isAmpPricing && (
-                    <p className="mt-4 text-sm text-blue-600 font-medium animate-in fade-in slide-in-from-top-2">
-                        $100/mo Discount Applied!
-                    </p>
-                )}
-            </div>
-
             {/* Pricing Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                 {tiers.map((tier) => (
@@ -112,7 +75,7 @@ export default function Pricing() {
 
                         <div className="mb-8 flex items-baseline">
                             <span className="text-4xl font-extrabold text-slate-900">
-                                ${isAmpPricing ? tier.ampPrice : tier.price}
+                                ${tier.price}
                             </span>
                             <span className="text-slate-500 font-medium ml-2">/month</span>
                         </div>

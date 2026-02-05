@@ -1,25 +1,25 @@
+
 import AccordionItem from "@/components/Accordion";
 import BookForm from "@/components/BookForm";
 import Pricing from "@/components/Pricing";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import Section from "@/components/Section";
+import StickyCTA from "@/components/StickyCTA";
 import VideoEmbed from "@/components/VideoEmbed";
-import { ArrowRight, CheckCircle, Lightbulb, Repeat, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       {/* HERO SECTION */}
-      <Section className="pt-32 pb-20">
+      <Section className="pt-8 md:pt-24 pb-12 md:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           <div className="space-y-8 lg:col-span-7">
             <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] text-balance">
               Your Content Engine <span className="text-blue-600">Extension</span>
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed text-balance">
-              This isn’t just content — it’s a clarity and consistency engine for dental practices. Strategy, production, and execution — all handled.
-            </p>
+            This isn’t just content; it’s a clarity and consistency engine for dental practices. Strategy, production, and execution, all handled.
 
             <ul className="space-y-4">
               {[
@@ -67,54 +67,18 @@ export default function Home() {
               {/* Decorative blob behind */}
               <div className="absolute -inset-12 bg-gradient-to-tr from-blue-100 to-orange-100 rounded-full -z-10 opacity-60 blur-3xl"></div>
 
-              
+
             </div>
           </div>
         </div>
       </Section>
 
-      {/* BE DIFFERENT SECTION */}
-      <Section className="bg-slate-50">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Be Different. Stand Out.</h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            We operate as your dedicated marketing division. A premium, tailored content system designed to help you stand out, not blend in. From planning to production, we capture attention, strengthen credibility, and elevate your presence.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: Lightbulb,
-              title: "Clarity",
-              desc: "Clear messaging that resonates with your ideal patients."
-            },
-            {
-              icon: Repeat,
-              title: "Consistency",
-              desc: "Regular, high-quality output that keeps you top of mind."
-            },
-            {
-              icon: ShieldCheck,
-              title: "Credibility",
-              desc: "Professional production that builds instant trust."
-            }
-          ].map((card, i) => (
-            <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center group">
-              <div className="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                <card.icon className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{card.title}</h3>
-              <p className="text-slate-600">{card.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* PORTFOLIO SECTION */}
       <Section id="portfolio">
         {/* Header Content */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Portfolio</span>
           <h2 className="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
             Real results for <span className="text-orange-500">modern clinics</span>.
@@ -125,59 +89,63 @@ export default function Home() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-          {/* Large Horizontal Video - Spans 2 cols */}
-          <div className="md:col-span-2 md:row-span-1 relative">
+        <div className="space-y-8">
+          {/* Row 1: 4 Vertical Videos */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            {/* Vertical Video 1 */}
+            <div className="relative flex justify-center">
+              <VideoEmbed
+                title="Patient Experience"
+                placeholderText="Patient Experience"
+                src="https://youtube.com/shorts/a19bVpu7hjE"
+                isVertical={true}
+                className="shadow-lg"
+              />
+            </div>
+
+            {/* Vertical Video 2 */}
+            <div className="relative flex justify-center">
+              <VideoEmbed
+                title="Clinic Tour"
+                placeholderText="Clinic Tour"
+                src="https://youtube.com/shorts/so-eepsOD9A"
+                isVertical={true}
+                className="shadow-lg"
+              />
+            </div>
+
+            {/* Vertical Video 3 */}
+            <div className="relative flex justify-center">
+              <VideoEmbed
+                title="Doctor Introductions"
+                placeholderText="Doctor Introductions"
+                src="https://youtube.com/shorts/2dRgt44oInA"
+                isVertical={true}
+                className="shadow-lg"
+              />
+            </div>
+
+            {/* Vertical Video 4 */}
+            <div className="relative flex justify-center">
+              <VideoEmbed
+                title="Educational Content"
+                placeholderText="Educational Content"
+                src="https://youtube.com/shorts/e3atsxJDIb0"
+                isVertical={true}
+                className="shadow-lg"
+              />
+            </div>
+          </div>
+
+          {/* Row 2: Large Horizontal Video */}
+          <div className="relative w-full">
             <VideoEmbed
               title="Treatment Explainers"
               placeholderText="See Our Production Quality"
               src="https://youtu.be/OO6QZdhJyd0"
-              className="h-full min-h-[300px] md:min-h-[400px] shadow-lg"
+              className="w-full shadow-lg rounded-2xl"
               isVertical={false}
             />
-          </div>
-
-          {/* Vertical Video 1 - Spans 1 col */}
-          <div className="md:col-span-1 md:row-span-1 relative">
-            <VideoEmbed
-              title="Patient Experience"
-              placeholderText="Patient Experience"
-              src="https://youtube.com/shorts/e3atsxJDIb0"
-              isVertical={true}
-              className="h-full shadow-lg"
-            />
-          </div>
-
-          {/* Vertical Video 2 */}
-          <div className="md:col-span-1 md:row-span-1 relative flex justify-center">
-            <VideoEmbed
-              title="Clinic Tour"
-              placeholderText="Clinic Tour"
-              src="https://youtube.com/shorts/so-eepsOD9A"
-              isVertical={true}
-              className="h-full shadow-lg"
-            />
-          </div>
-
-          {/* Vertical Video 3 */}
-          <div className="md:col-span-1 md:row-span-1 relative flex justify-center">
-            <VideoEmbed
-              title="Doctor Introductions"
-              placeholderText="Doctor Introductions"
-              src="https://youtube.com/shorts/2dRgt44oInA"
-              isVertical={true}
-              className="h-full shadow-lg"
-            />
-          </div>
-
-          {/* Call to Action Card in Grid */}
-          <div className="md:col-span-1 md:row-span-1 bg-blue-600 rounded-2xl p-8 flex flex-col justify-center items-start text-white shadow-lg relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150 duration-700"></div>
-            <h3 className="text-2xl font-bold mb-4 relative z-10">See more examples?</h3>
-            <p className="text-blue-100 mb-6 relative z-10">Check out our full channel or book a call to see relevant case studies.</p>
-            <Link href="#book" className="bg-white text-blue-600 px-6 py-3 rounded-full font-bold text-sm hover:bg-blue-50 transition-colors relative z-10">
-              Book Strategy Call
-            </Link>
           </div>
         </div>
       </Section>
@@ -186,7 +154,7 @@ export default function Home() {
       <Section id="packages" className="bg-slate-50">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-            A consistent drop of premium assets — <span className="text-blue-600">every month</span>.
+            A consistent drop of premium assets, <span className="text-blue-600">every month</span>.
           </h2>
           <p className="text-lg text-slate-600">Choose the tier that fits your growth goals.</p>
         </div>
@@ -203,98 +171,12 @@ export default function Home() {
         <ProcessTimeline />
       </Section>
 
-      {/* DETAILED PACKAGES ACCORDION */}
-      <Section className="bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold text-slate-900">Detailed Package Breakdowns</h2>
-            <p className="text-slate-500">Everything included in each tier.</p>
-          </div>
 
-          <AccordionItem title="Launch Package" subtitle="Just Content Creation">
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-bold text-slate-900 mb-2">Deliverables</h4>
-                <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                  <li>4 Short form videos</li>
-                  <li>Limited Visual assets</li>
-                  <li>Meta Ads Consultation</li>
-                  <li>1 Monthly Video Shoot</li>
-                </ul>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Who it&apos;s for</h4>
-                  <p className="text-sm text-slate-600">Clinics that need high-quality assets to post themselves but lack production capabilities.</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Monthly snapshot</h4>
-                  <p className="text-sm text-slate-600">We shoot, we edit, you post. A steady stream of 4 high-value videos per month.</p>
-                </div>
-              </div>
-            </div>
-          </AccordionItem>
-
-          <AccordionItem title="Hands-Free Package" subtitle="Social Media Management" defaultOpen={true}>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-bold text-slate-900 mb-2">Deliverables</h4>
-                <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                  <li>Social media management</li>
-                  <li>8 Short form videos</li>
-                  <li>4 Visual assets</li>
-                  <li>1 Marketing Campaign</li>
-                  <li>Monthly Strategy Call & Stats Report</li>
-                  <li>2 Monthly Video Shoots</li>
-                </ul>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Who it&apos;s for</h4>
-                  <p className="text-sm text-slate-600">Practices that want to delegate the entire social grind. We handle the posting and engagement strategy.</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Monthly snapshot</h4>
-                  <p className="text-sm text-slate-600">Double the video volume, full management. Your channels stay active without you lifting a finger.</p>
-                </div>
-              </div>
-            </div>
-          </AccordionItem>
-
-          <AccordionItem title="Full-House Package" subtitle="Online Presence Management">
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-bold text-slate-900 mb-2">Deliverables</h4>
-                <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                  <li>Full online presence management</li>
-                  <li>12 Short-form videos</li>
-                  <li>Unlimited Visual assets</li>
-                  <li>Full campaign content operations</li>
-                  <li>LinkedIn setup & consultation</li>
-                  <li>YouTube setup & 2 YouTube videos</li>
-                  <li>Monthly Strategy Call & Stats Report</li>
-                  <li>3 Monthly Video Shoots</li>
-                </ul>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Who it&apos;s for</h4>
-                  <p className="text-sm text-slate-600">Aggressive growth clinics wanting to dominate their local market across every major platform.</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-2">Monthly snapshot</h4>
-                  <p className="text-sm text-slate-600">Massive content volume (3 videos/week avg), comprehensive cross-platform strategy.</p>
-                </div>
-              </div>
-            </div>
-          </AccordionItem>
-        </div>
-      </Section>
 
       {/* FAQ SECTION */}
       <Section id="faq">
         <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {[
             { q: "Do you handle posting?", a: "Yes, for the Hands-Free and Full-House packages. For the Launch package, we deliver the ready-to-post assets to you." },
             { q: "How many shoot days are included?", a: "Launch includes 1 shoot day. Hands-Free includes 2. Full-House includes 3. We batch content efficiently to respect your clinic's time." },
@@ -303,10 +185,9 @@ export default function Home() {
             { q: "What platforms do you manage?", a: "Primarily Instagram and Facebook (Meta). Full-House adds LinkedIn and YouTube optimization to the mix." },
             { q: "How fast do we start?", a: "After the strategy call, we have a two-week foundation phase to build your content vault. This ensures we're never scrambling and you have a consistent posting schedule from Day 1." },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-6 rounded-xl border border-slate-100">
-              <h4 className="font-bold text-slate-900 mb-2 text-lg">{item.q}</h4>
-              <p className="text-slate-600">{item.a}</p>
-            </div>
+            <AccordionItem key={i} title={item.q}>
+              <p className="text-slate-600 leading-relaxed">{item.a}</p>
+            </AccordionItem>
           ))}
         </div>
       </Section>
@@ -343,6 +224,8 @@ export default function Home() {
           </div>
         </div>
       </Section>
+
+      <StickyCTA />
     </>
   );
 }

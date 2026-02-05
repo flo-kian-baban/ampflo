@@ -93,16 +93,7 @@ export default function BookForm() {
                 ></textarea>
             </div>
 
-            <div className="flex items-start gap-3 py-2">
-                <input
-                    type="checkbox"
-                    id="urgent"
-                    className="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                />
-                <label htmlFor="urgent" className="text-sm text-slate-600">
-                    We represent a busy clinic and are ready to start within 30 days.
-                </label>
-            </div>
+
 
             <button
                 type="submit"

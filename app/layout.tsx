@@ -8,7 +8,7 @@ import StickyCTA from "@/components/StickyCTA";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AMPFlo — A Content Engine for Dentists",
+  title: "AMPFlo, A Content Engine for Dentists",
   description: "Clarity, Consistency, Credibility. The premier video content engine for dental practices.",
 };
 
